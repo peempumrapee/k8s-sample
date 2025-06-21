@@ -2,22 +2,30 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: example-deployment
-  namespace: example
-  labels:
-    app: example-app
 spec:
   replicas: 3
   selector:
     matchLabels:
       app: example-app
   template:
-    metadata:
-      labels:
-        app: example-app
     spec:
       containers:
       - name: example-app
         image: nginx:1.14.2
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "200m"
+            memory: "256Mi"
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
         ports:
         - containerPort: 80
-
