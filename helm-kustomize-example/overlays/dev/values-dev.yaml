@@ -1,6 +1,7 @@
 replicaCount: 2
 image:
-  tag: "1.21"
+  tag: "1.27"
 service:
   type: NodePort
-  port: 30080
+  port: 80
+  nodePort: 30080
