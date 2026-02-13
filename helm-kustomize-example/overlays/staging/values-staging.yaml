@@ -1,6 +1,6 @@
 replicaCount: 3
 image:
-  tag: "1.21"
+  tag: "1.27"
 service:
   type: ClusterIP
   port: 80
